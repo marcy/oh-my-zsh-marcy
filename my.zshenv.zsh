@@ -40,7 +40,7 @@ case $OSTYPE in
         export GTK_IM_MODULE=uim
         # export PAGER=/opt/local/bin/lv
         #export REFE_DATA_DIR=/usr/share/refe
-        export RUBYLIB=$RUBYLIB:~/Dropbox/ruby/lib
+        export RUBYLIB=$RUBYLIB:~/Dropbox/ruby/lib:/usr/local/lib/ruby
         export JRUBY_HOME=$HOME/local/jruby
         # export PYTHONPATH=/opt/local/lib/python2.4/site-packages:~/python/lib
         # export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
