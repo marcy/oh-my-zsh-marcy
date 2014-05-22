@@ -1,3 +1,10 @@
+### Complement ###
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # 補完時に大文字小文字を区別しない
+
+### Glob ###
+setopt extended_glob # グロブ機能を拡張する
+unsetopt caseglob    # ファイルグロブで大文字小文字を区別しない
+
 HISTFILE=$HOME/Dropbox/dotfiles/dot.zsh-history
 HISTSIZE=100000
 SAVEHIST=100000
