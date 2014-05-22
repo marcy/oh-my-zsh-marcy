@@ -45,7 +45,7 @@ case $OSTYPE in
         # export PYTHONPATH=/opt/local/lib/python2.4/site-packages:~/python/lib
         # export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
         # export CLASSPATH=/System/Library/Frameworks/JavaVM.framework/Classes/
-        export PATH=$HOME/.cabal/bin:$HOME/bin:/opt/local/bin:/usr/local/bin:/bin:/usr/local/sbin:/sbin:/usr/sbin:/usr/bin:/usr/X11R6/bin:$PATH:$JRUBY_HOME/bin:$HOME/Dropbox/bin
+        export PATH=$HOME/.cabal/bin:$HOME/bin:/opt/local/bin:/usr/local/bin:/bin:/usr/local/sbin:/sbin:/usr/sbin:/usr/bin:/usr/X11R6/bin:$PATH:$JRUBY_HOME/bin:$HOME/Dropbox/bin:/usr/local/share/npm/bin
         export LD_LIBRARY_PATH=/usr/local/lib:/opt/local/lib:~/lib
         export MANPATH=/opt/local/man:/opt/local/share/man:/usr/share/man:/usr/local/man:/usr/local/share/man
         export GREP_OPTIONS="--binary-files=without-match --color=auto"
