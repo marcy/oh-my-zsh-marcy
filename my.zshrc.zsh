@@ -60,14 +60,16 @@ function do_enter() {
         zle accept-line
         return 0
     fi
+    # ls を表示
     echo
     ls
-    # ↓おすすめ
+    # git status を表示
     # ls_abbrev
     if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
         echo
         echo -e "\e[0;33m--- git status ---\e[0m"
         git status -sb
+        echo
     fi
     zle reset-prompt
     return 0
