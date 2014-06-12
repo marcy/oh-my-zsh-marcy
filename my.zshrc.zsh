@@ -63,6 +63,7 @@ function do_enter() {
     # ls を表示
     echo
     ls
+    echo
     # git status を表示
     # ls_abbrev
     if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
