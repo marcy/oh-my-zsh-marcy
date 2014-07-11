@@ -33,6 +33,7 @@ alias -g H='| head'
 alias -g T='| tail'
 
 alias r='bundle exec rails'
+alias be='bundle exec'
 
 alias g="git"
 
@@ -51,9 +52,7 @@ case $OSTYPE in
         ;;
 esac
 
-[[ -f `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-
-eval "$(rbenv init -)"
+eval "$(rbenv init - zsh)"
 
 function do_enter() {
     if [ -n "$BUFFER" ]; then
@@ -77,3 +76,22 @@ function do_enter() {
 }
 zle -N do_enter
 bindkey '^m' do_enter
+
+#######################################
+# peco hitory
+#######################################
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
