@@ -50,7 +50,7 @@ case $OSTYPE in
         export MANPATH=/opt/local/man:/opt/local/share/man:/usr/share/man:/usr/local/man:/usr/local/share/man
         export GREP_OPTIONS="--binary-files=without-match --color=auto"
         export LESS='-R'
-        export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
+        # export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
         export BUNDLER_EDITOR=emacsclient
         ;;
 esac
