@@ -36,6 +36,8 @@ alias r='bundle exec rails'
 alias be='bundle exec'
 
 alias g="git"
+alias gpeco='cd $(ghq list -p | peco)'
+alias ghpeco='gh-open $(ghq list -p | peco)'
 
 alias ec='emacsclient'
 
@@ -53,6 +55,8 @@ case $OSTYPE in
 esac
 
 eval "$(rbenv init - zsh)"
+
+eval "$(hub alias -s)"
 
 function do_enter() {
     if [ -n "$BUFFER" ]; then
@@ -89,6 +93,7 @@ function peco-select-history() {
     fi
     BUFFER=$(\history -n 1 | \
         eval $tac | \
+        perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | \
         peco --query "$LBUFFER")
     CURSOR=$#BUFFER
     zle clear-screen
