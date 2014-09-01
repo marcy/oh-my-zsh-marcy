@@ -36,8 +36,8 @@ alias r='bundle exec rails'
 alias be='bundle exec'
 
 alias g="git"
-alias gpeco='cd $(ghq list -p | peco)'
-alias ghpeco='gh-open $(ghq list -p | peco)'
+alias p='cd $(ghq list -p | peco)'
+alias hp='gh-open $(ghq list -p | peco)'
 
 alias ec='emacsclient'
 
