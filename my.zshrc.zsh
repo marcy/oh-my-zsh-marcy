@@ -47,7 +47,7 @@ case $OSTYPE in
         alias e='emacs'
         ;;
     darwin*)
-        alias e='open -a /Applications/Emacs.app'
+        alias e='open -a ~/Applications/Emacs.app'
         alias fcd='source /Users/masashi/bin/fcd.sh'
         alias xsetbg='xsetroot -bitmap /Users/masashi/Dropbox/Photos/WallPaper/standard/bsd.xbm'
         alias -s "txt"='open -a Emacs'
@@ -99,4 +99,4 @@ function peco-select-history() {
     zle clear-screen
 }
 zle -N peco-select-history
-bindkey '^r' peco-select-history
+#bindkey '^r' peco-select-history
