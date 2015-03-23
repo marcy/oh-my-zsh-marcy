@@ -93,10 +93,15 @@ function peco-select-history() {
     fi
     BUFFER=$(\history -n 1 | \
         eval $tac | \
-        perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | \
         peco --query "$LBUFFER")
     CURSOR=$#BUFFER
     zle clear-screen
 }
 zle -N peco-select-history
 #bindkey '^r' peco-select-history
+
+function peco-cd-git-project() {
+    ghq list -p | peco
+}
+zle -N peco-cd-git-project
+#bindkey '^\;' peco-cd-git-project
