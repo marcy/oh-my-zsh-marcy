@@ -53,6 +53,9 @@ case $OSTYPE in
         export LESS='-R'
         # export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
         export BUNDLER_EDITOR=emacsclient
+        # export DOCKER_CERT_PATH=/Users/masashi_oyamada/.boot2docker/certs/boot2docker-vm
+        # export DOCKER_TLS_VERIFY=1
+        # export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
         ;;
 esac
 
