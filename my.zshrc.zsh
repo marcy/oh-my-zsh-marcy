@@ -6,10 +6,10 @@ setopt extended_glob # グロブ機能を拡張する
 unsetopt caseglob    # ファイルグロブで大文字小文字を区別しない
 
 HISTFILE=$HOME/Dropbox/dotfiles/dot.zsh-history
-HISTSIZE=100000
+HISTSIZE=10000
 SAVEHIST=100000
 
-function history-all { history -E 1 }
+function history-all { \history -E 1 }
 
 alias rm='rm -i'
 alias vi='vim'
@@ -98,7 +98,7 @@ function peco-select-history() {
     zle clear-screen
 }
 zle -N peco-select-history
-#bindkey '^r' peco-select-history
+bindkey '^r' peco-select-history
 
 function peco-cd-git-project() {
     ghq list -p | peco
