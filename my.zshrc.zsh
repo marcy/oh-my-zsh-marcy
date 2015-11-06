@@ -39,7 +39,7 @@ alias g="git"
 alias p='cd $(ghq list -p | peco)'
 alias hp='gh-open $(ghq list -p | peco)'
 
-alias ec='emacsclient'
+alias ec='emacsclient -n'
 
 # ホストごとの設定
 case $OSTYPE in
