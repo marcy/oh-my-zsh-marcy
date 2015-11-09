@@ -31,6 +31,7 @@ alias -g G='| grep'
 alias -g L='| lv -c'
 alias -g H='| head'
 alias -g T='| tail'
+alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`'
 
 alias r='bundle exec rails'
 alias be='bundle exec'
@@ -81,9 +82,7 @@ function do_enter() {
 zle -N do_enter
 bindkey '^m' do_enter
 
-#######################################
 # peco hitory
-#######################################
 function peco-select-history() {
     local tac
     if which tac > /dev/null; then
@@ -100,8 +99,42 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+# peco git-project
 function peco-cd-git-project() {
     ghq list -p | peco
 }
 zle -N peco-cd-git-project
 #bindkey '^\;' peco-cd-git-project
+
+# peco find-file
+function peco-find-file() {
+    if git rev-parse 2> /dev/null; then
+        source_files=$(git ls-files)
+    else
+        source_files=$(find . -type f)
+    fi
+    selected_files=$(echo $source_files | peco --prompt "[find file]")
+
+    result=''
+    for file in $selected_files; do
+        result="${result}$(echo $file | tr '\n' ' ')"
+    done
+
+    BUFFER="${BUFFER}${result}"
+    CURSOR=$#BUFFER
+    zle redisplay
+}
+zle -N peco-find-file
+bindkey '^q' peco-find-file
+
+# peco bundle open
+function peco-bundle-open() {
+    local selected=$(bundle show 2> /dev/null | sed -e '/^  \*/!d; s/^  \* \([^ ]*\) .*/\1/' | peco --query "$LBUFFER")
+    if [ -n "$selected" ]; then
+        BUFFER="bundle open ${selected}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-bundle-open
+bindkey '^o' peco-bundle-open
