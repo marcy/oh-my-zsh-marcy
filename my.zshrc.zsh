@@ -94,7 +94,7 @@ function peco-select-history() {
         eval $tac | \
         peco --query "$LBUFFER")
     CURSOR=$#BUFFER
-    zle clear-screen
+    #zle clear-screen
 }
 zle -N peco-select-history
 bindkey '^r' peco-select-history
@@ -104,7 +104,7 @@ function peco-cd-git-project() {
     ghq list -p | peco
 }
 zle -N peco-cd-git-project
-#bindkey '^\;' peco-cd-git-project
+bindkey '^]' peco-cd-git-project
 
 # peco find-file
 function peco-find-file() {
@@ -134,7 +134,7 @@ function peco-bundle-open() {
         BUFFER="bundle open ${selected}"
         zle accept-line
     fi
-    zle clear-screen
+    #zle clear-screen
 }
 zle -N peco-bundle-open
 bindkey '^o' peco-bundle-open
