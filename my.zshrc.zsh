@@ -17,7 +17,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias ls='ls -Fv'
 alias df='df -h'
-
+alias peco='peco --layout=bottom-up'
 function chpwd() { ls }
 
 alias gd='dirs -v| head; echo -n "select number: "; read newdir; cd +"$newdir"'
@@ -101,7 +101,8 @@ bindkey '^r' peco-select-history
 
 # peco git-project
 function peco-cd-git-project() {
-    ghq list -p | peco
+    cd $(ghq list -p | peco)
+    zle accept-line
 }
 zle -N peco-cd-git-project
 bindkey '^]' peco-cd-git-project
